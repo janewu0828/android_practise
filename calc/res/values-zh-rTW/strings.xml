@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">計算器</string>
+    <string name="action_settings">設定</string>
+    <string name="Fen">分：</string>
+    <string name="KuanChing">管徑：</string>
+    <string name="Thickness">厚度：</string>
+    <string name="ChooseThickness">(請輸入厚度)</string>
+    <string name="MiShu">米數：</string>
+    <string name="Weight">重量：</string>
+    <string name="ChooseBtnCalc">(請點擊計算按鈕)</string>
+    <string name="Calc">計算</string>
+    <string name="WeightPC">總重(PC)：</string>
+    <string name="PriceTun">價格(噸)：</string>
+    <string name="ChoosePriceTun">(請輸入價格)</string>
+    <string name="ChiaKunTun">加工(噸)：</string>
+    <string name="ChooseChiaKunTun">(請輸入加工(噸) )</string>
+    <string name="ChuangHsiang">裝箱：</string>
+    <string name="ChooseChuangHsiang">(請輸入裝箱)</string>
+    <string name="PriceMi">價格(米)：</string>
+    <string name="ChoosePriceMi">(請輸入價格(米) )</string>
+    <string name="SumPaoPi">包皮總和：</string>
+    <string name="OtherCostPC">其他費用(PC)：</string>
+    <string name="ChooseOtherCostPC">(請輸入其他費用(PC) )</string>
+    <string name="PakageCost">每箱成本：</string>
+    <string name="HuiLu01">匯率1：</string>
+    <string name="ChooseHuiLu01">(請輸入匯率1)</string>
+    <string name="Price01">金額1：</string>
+    <string name="HuiLu02">匯率2：</string>
+    <string name="ChooseHuiLu02">(請輸入匯率2)</string>
+    <string name="Price02">金額2：</string>
+    <string name="Clear">清除</string>
+
+</resources>

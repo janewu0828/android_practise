@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Calc</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Fen">Fen: </string>
+    <string name="KuanChing">Kuan Ching: </string>
+    <string name="Thickness">Thickness: </string>
+    <string name="ChooseThickness">(Please Input Thickness)</string>
+    <string name="MiShu">Mi Shu: </string>
+    <string name="Weight">Weight: </string>
+    <string name="ChooseBtnCalc">(Please Click Calc Button)</string>
+    <string name="Calc">Calc</string>
+    <string name="WeightPC">Weight (PC): </string>
+    <string name="PriceTun">Price (Tun): </string>
+    <string name="ChoosePriceTun">(Please Input Price)</string>
+    <string name="ChiaKunTun">Chia Kun (Tun): </string>
+    <string name="ChooseChiaKunTun">(Please Input Chia Kun (Tun) )</string>
+    <string name="ChuangHsiang">Chuang Hsiang: </string>
+    <string name="ChooseChuangHsiang">(Please Input Chuang Hsiang)</string>
+    <string name="PriceMi">Price (Mi): </string>
+    <string name="ChoosePriceMi">(Please Input Price (Mi) )</string>
+    <string name="SumPaoPi">Sum Pao Pi: </string>
+    <string name="OtherCostPC">Other Cost(PC): </string>
+    <string name="ChooseOtherCostPC">(Please Input Other Cost(PC) )</string>
+    <string name="PakageCost">Pakage Cost: </string>
+    <string name="HuiLu01">Hui Lu 01: </string>
+    <string name="ChooseHuiLu01">(Please Input Hui Lu 01)</string>
+    <string name="Price01">Price 01: </string>
+    <string name="HuiLu02">Hui Lu 02: </string>
+    <string name="ChooseHuiLu02">(Please Input Hui Lu 02)</string>
+    <string name="Price02">Price 02: </string>
+    <string name="Clear">Clear</string>
+
+</resources>
