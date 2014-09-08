@@ -102,12 +102,21 @@
                 android:text="@string/ChooseBtnCalc" />
 
             <Button
-                android:id="@+id/btnCalC_Blue"
+                android:id="@+id/btnCalC_blue"
                 style="@style/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtWeight1"
+                android:layout_below="@+id/txtWeight11"
                 android:text="@string/Calc" />
+
+            <Button
+                android:id="@+id/btnClear_blue"
+                style="@style/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtWeight11"
+                android:layout_toRightOf="@+id/btnCalC_blue"
+                android:text="@string/Clear" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -203,14 +212,21 @@
                 android:text="@string/ChooseBtnCalc" />
 
             <Button
-                android:id="@+id/btnCalC_Green"
+                android:id="@+id/btnCalC_green"
                 style="@style/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtWeight22"
                 android:text="@string/Calc" />
-            <!-- </RelativeLayout> -->
-            <!-- </ScrollView> -->
+
+            <Button
+                android:id="@+id/btnClear_green"
+                style="@style/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtWeight22"
+                android:layout_toRightOf="@+id/btnCalC_green"
+                android:text="@string/Clear" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -473,12 +489,21 @@
                         android:text="@string/ChooseBtnCalc" />
 
                     <Button
-                        android:id="@+id/btnCalC_Red"
+                        android:id="@+id/btnCalC_red"
                         style="@style/button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/txtPrice333"
+                        android:layout_below="@+id/txtPrice3333"
                         android:text="@string/Calc" />
+
+                    <Button
+                        android:id="@+id/btnClear_red"
+                        style="@style/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtPrice3333"
+                        android:layout_toRightOf="@+id/btnCalC_red"
+                        android:text="@string/Clear" />
                 </RelativeLayout>
             </ScrollView>
         </RelativeLayout>

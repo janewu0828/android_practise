@@ -154,15 +154,15 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 		editHuiLu33 = (EditText) findViewById(R.id.editHuiLu3333);
 
 		ButtonCalc btnCalc = new ButtonCalc();
-		btnCalC_Blue = (Button) findViewById(R.id.btnCalC_Blue);
+		btnCalC_Blue = (Button) findViewById(R.id.btnCalC_blue);
 		btnCalC_Blue.setOnClickListener(btnCalc);
 
 		ButtonCalc_Green btnCalc2 = new ButtonCalc_Green();
-		btnCalC_Green = (Button) findViewById(R.id.btnCalC_Green);
+		btnCalC_Green = (Button) findViewById(R.id.btnCalC_green);
 		btnCalC_Green.setOnClickListener(btnCalc2);
 
 		ButtonCalc_Red btnCalc3 = new ButtonCalc_Red();
-		btnCalC_Red = (Button) findViewById(R.id.btnCalC_Red);
+		btnCalC_Red = (Button) findViewById(R.id.btnCalC_red);
 		btnCalC_Red.setOnClickListener(btnCalc3);
 	}
 
