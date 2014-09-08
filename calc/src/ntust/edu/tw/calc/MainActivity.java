@@ -404,7 +404,7 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 		myTabhost = this.getTabHost();
 
 		// get Tabhost
-		LayoutInflater.from(this).inflate(R.layout.main,
+		LayoutInflater.from(this).inflate(R.layout.fragment_main,
 				myTabhost.getTabContentView(), true);
 
 		myTabhost.setBackgroundColor(Color.argb(150, 22, 70, 150));
