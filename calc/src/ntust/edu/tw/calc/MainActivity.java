@@ -58,6 +58,7 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 			adapterMiShu3;
 	String[] strTwo = { "2", "3", "4", "5", "6" };
 	String[] strTwenty = { "20", "30" };
+
 	float fen = 0.0f, thickness = 0.0f, miShu = 0.0f, weight = 0.0f,
 			fen2 = 0.0f, thickness2 = 0.0f, miShu2 = 0.0f, weight2 = 0.0f,
 			miShu3 = 0.0f, pakageCost3 = 0.0f, price3 = 0.0f;
@@ -77,6 +78,8 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 	Button btnCalC_Blue, btnCalC_Green, btnCalC_Red, btnClear_Blue,
 			btnClear_Green, btnClear_Red;
 
+	AlertDialogManager alert;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,18 +90,20 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 
 		// components
 		findViews();
+
+		alert = new AlertDialogManager();
 	}
 
 	private void findViews() {
 		mContext = this.getApplicationContext();
 
-		spinnerFen = (Spinner) findViewById(R.id.spinnerFen11);		
+		spinnerFen = (Spinner) findViewById(R.id.spinnerFen11);
 		// adapterFen = new ArrayAdapter<String>(this,
 		// android.R.layout.simple_spinner_item, strTwo);
 		// 將可選内容與ArrayAdapter連接起來
 		adapterFen = new ArrayAdapter<String>(this, R.layout.spinner_layout,
 				strTwo);
-		//設置下拉列表的風格
+		// 設置下拉列表的風格
 		adapterFen.setDropDownViewResource(R.layout.spinner_layout);
 		// 設定fen spinner顯示的字串內容
 		spinnerFen.setAdapter(adapterFen);
@@ -106,26 +111,26 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 		spinnerFen.setOnItemSelectedListener(spinnerListenerFen);
 
 		spinnerFen2 = (Spinner) findViewById(R.id.spinnerFen22);
-		adapterFen2 = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, strTwo);
+		adapterFen2 = new ArrayAdapter<String>(this, R.layout.spinner_layout,
+				strTwo);
 		spinnerFen2.setAdapter(adapterFen2);
 		spinnerFen2.setOnItemSelectedListener(spinnerListenerFen2);
 
 		spinnerMiShu = (Spinner) findViewById(R.id.spinnerMiShu11);
-		adapterMiShu = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, strTwenty);
+		adapterMiShu = new ArrayAdapter<String>(this, R.layout.spinner_layout,
+				strTwenty);
 		spinnerMiShu.setAdapter(adapterMiShu);
 		spinnerMiShu.setOnItemSelectedListener(spinnerListenerMiShu);
 
 		spinnerMiShu2 = (Spinner) findViewById(R.id.spinnerMiShu22);
-		adapterMiShu2 = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, strTwenty);
+		adapterMiShu2 = new ArrayAdapter<String>(this, R.layout.spinner_layout,
+				strTwenty);
 		spinnerMiShu2.setAdapter(adapterMiShu2);
 		spinnerMiShu2.setOnItemSelectedListener(spinnerListenerMiShu2);
 
 		spinnerMiShu3 = (Spinner) findViewById(R.id.spinnerMiShu33);
-		adapterMiShu3 = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, strTwenty);
+		adapterMiShu3 = new ArrayAdapter<String>(this, R.layout.spinner_layout,
+				strTwenty);
 		spinnerMiShu3.setAdapter(adapterMiShu3);
 		spinnerMiShu3.setOnItemSelectedListener(spinnerListenerMiShu3);
 
@@ -164,6 +169,54 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 		ButtonCalc_Red btnCalc3 = new ButtonCalc_Red();
 		btnCalC_Red = (Button) findViewById(R.id.btnCalC_red);
 		btnCalC_Red.setOnClickListener(btnCalc3);
+
+		btnClear_Blue = (Button) findViewById(R.id.btnClear_blue);
+		btnClear_Blue.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				editThickness.setText("");
+
+				txtKuanChing.setText(getResources().getString(
+						R.string.ChooseBtnCalc));
+				txtWeight.setText(getResources().getString(
+						R.string.ChooseBtnCalc));
+			}
+		});
+
+		btnClear_Green = (Button) findViewById(R.id.btnClear_green);
+		btnClear_Green.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				editThickness2.setText("");
+
+				txtKuanChing2.setText(getResources().getString(
+						R.string.ChooseBtnCalc));
+				txtWeight2.setText(getResources().getString(
+						R.string.ChooseBtnCalc));
+			}
+		});
+
+		btnClear_Red = (Button) findViewById(R.id.btnClear_red);
+		btnClear_Red.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				editPriceTun3.setText("");
+				editChiaKungTun3.setText("");
+				editChuangHsiang3.setText("");
+				editPriceMi3.setText("");
+				editOtherCostPC3.setText("");
+				editHuiLu3.setText("");
+				editHuiLu33.setText("");
+
+				txtWeightPC3.setText(getResources().getString(
+						R.string.ChooseBtnCalc));
+				txtSumPaoPi3.setText(getResources().getString(
+						R.string.ChooseBtnCalc));
+				txtPakageCost3.setText(getResources().getString(
+						R.string.ChooseBtnCalc));
+				txtPrice3.setText(getResources().getString(
+						R.string.ChooseBtnCalc));
+				txtPrice33.setText(getResources().getString(
+						R.string.ChooseBtnCalc));
+			}
+		});
 	}
 
 	// 內隱類別（inner class）：計算
@@ -171,6 +224,8 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 		public void onClick(View view) {
 			txtKuanChing.setText(""
 					+ Float.parseFloat(String.format("%.4f", fen * 3.175)));
+
+			System.out.println("科目一：管徑= 分*3.175 ");
 
 			// 若 editThickness 不為空
 			if (!("".equals(editThickness.getText().toString().trim()))) {
@@ -180,10 +235,12 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 				txtWeight.setText(""
 						+ Float.parseFloat(String.format("%.4f", weight)));
 
-				System.out.println("weight= " + weight);
+				System.out.println("科目一：重量= (分*3.175-厚度)*厚度*0.028*米數= "
+						+ weight);
 			} else {
-				Toast.makeText(mContext, "科目一：請輸入厚度", Toast.LENGTH_SHORT)
-						.show();
+				Toast.makeText(mContext,
+						getResources().getString(R.string.txtWeight_error),
+						Toast.LENGTH_SHORT).show();
 			}
 		}
 
@@ -196,6 +253,8 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 			txtKuanChing2.setText(""
 					+ Float.parseFloat(String.format("%.4f", fen2 * 3.175)));
 
+			System.out.println("科目二：管徑= 分*3.175 ");
+
 			// 若 editThickness2 不為空
 			if (!("".equals(editThickness2.getText().toString().trim()))) {
 				thickness2 = Float.parseFloat(editThickness2.getText()
@@ -205,21 +264,13 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 				txtWeight2.setText(""
 						+ Float.parseFloat(String.format("%.4f", weight2)));
 
-				System.out.println("weight2= " + weight2);
+				System.out.println("科目二：重量= (分*3.175-厚度)*厚度*0.028*米數= "
+						+ weight2);
 			} else {
-				Toast.makeText(mContext, "科目二：請輸入厚度", Toast.LENGTH_SHORT)
-						.show();
+				Toast.makeText(mContext,
+						getResources().getString(R.string.txtWeight2_error),
+						Toast.LENGTH_SHORT).show();
 			}
-
-			// 若 editThickness && editThickness2 不為空
-			if (!("".equals(editThickness.getText().toString().trim()))
-					&& !("".equals(editThickness2.getText().toString().trim())))
-				txtWeightPC3.setText(""
-						+ Float.parseFloat(String.format("%.4f", weight
-								+ weight2)));
-			else
-				Toast.makeText(mContext, "科目一、二：請輸入厚度", Toast.LENGTH_SHORT)
-						.show();
 		}
 
 	}
@@ -228,6 +279,24 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 	private class ButtonCalc_Red implements OnClickListener {
 
 		public void onClick(View view) {
+			// 若 txtWeight && txtWeight2 不為空
+			if (!(getResources().getString(R.string.ChooseBtnCalc)
+					.equals(txtWeight.getText().toString().trim()))
+					&& !(getResources().getString(R.string.ChooseBtnCalc)
+							.equals(txtWeight2.getText().toString().trim()))) {
+
+				txtWeightPC3.setText(""
+						+ Float.parseFloat(String.format("%.4f", weight
+								+ weight2)));
+
+				System.out.println("包皮成本：總重(PC)= 科目一重量+科目二重量= " + weight
+						+ weight2);
+			} else {
+				Toast.makeText(mContext,
+						getResources().getString(R.string.txtWeightPC3_error),
+						Toast.LENGTH_SHORT).show();
+			}
+
 			// 若 editPriceMi3 不為空
 			if (!("".equals(editPriceMi3.getText().toString().trim()))) {
 				txtSumPaoPi3.setText(""
@@ -235,17 +304,25 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 								"%.4f",
 								Float.parseFloat(editPriceMi3.getText()
 										.toString()) * miShu3)));
+
+				System.out.println("包皮成本：包皮總和= 價格*米數 ");
 			} else {
-				Toast.makeText(mContext, "包皮成本：請輸入價格(米)", Toast.LENGTH_SHORT)
-						.show();
+				Toast.makeText(mContext,
+						getResources().getString(R.string.txtSumPaoPi3_error),
+						Toast.LENGTH_SHORT).show();
 			}
 
 			// 若不為空
-			if (!("".equals(editPriceTun3.getText().toString().trim()))
+			if (!(getResources().getString(R.string.ChooseBtnCalc)
+					.equals(txtWeightPC3.getText().toString().trim()))
+					&& !(getResources().getString(R.string.ChooseBtnCalc)
+							.equals(txtSumPaoPi3.getText().toString().trim()))
+					&& !("".equals(editPriceTun3.getText().toString().trim()))
 					&& !("".equals(editChiaKungTun3.getText().toString().trim()))
 					&& !("".equals(editChuangHsiang3.getText().toString()
 							.trim()))
 					&& !("".equals(editOtherCostPC3.getText().toString().trim()))) {
+
 				pakageCost3 = Float.parseFloat(txtWeightPC3.getText()
 						.toString())
 						* (Float.parseFloat(editPriceTun3.getText().toString()) + Float
@@ -261,10 +338,12 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 				txtPakageCost3.setText(""
 						+ Float.parseFloat(String.format("%.4f", pakageCost3)));
 
-				System.out.println("包皮成本：總重*((價格+加工)/1000)+裝箱+包皮總和+其他費用 ");
+				System.out
+						.println("包皮成本：每箱成本= 總重*((價格+加工)/1000)+裝箱+包皮總和+其他費用 ");
 			} else {
-				Toast.makeText(mContext,
-						"科目一、二：請輸入厚度；+\n+包皮成本：請輸入價格、加工、裝箱以及其他費用",
+				Toast.makeText(
+						mContext,
+						getResources().getString(R.string.txtPakageCost3_error),
 						Toast.LENGTH_SHORT).show();
 			}
 
@@ -275,10 +354,11 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 				txtPrice3.setText(""
 						+ Float.parseFloat(String.format("%.4f", price3)));
 
-				System.out.println("金額1：每箱成本 * 匯率1 ");
+				System.out.println("包皮成本：金額1= 每箱成本*匯率1 ");
 			} else {
-				Toast.makeText(mContext, "包皮成本：請輸入匯率1", Toast.LENGTH_SHORT)
-						.show();
+				Toast.makeText(mContext,
+						getResources().getString(R.string.txtPrice3_error),
+						Toast.LENGTH_SHORT).show();
 			}
 
 			// 若不為空
@@ -290,10 +370,11 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 										* Float.parseFloat(editHuiLu33
 												.getText().toString()))));
 
-				System.out.println("金額2：金額1*匯率2 ");
+				System.out.println("包皮成本：金額2= 金額1*匯率2 ");
 			} else {
-				Toast.makeText(mContext, "包皮成本：請輸入匯率2", Toast.LENGTH_SHORT)
-						.show();
+				Toast.makeText(mContext,
+						getResources().getString(R.string.txtPrice33_error),
+						Toast.LENGTH_SHORT).show();
 			}
 		}
 
@@ -306,7 +387,11 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 		public void onItemSelected(AdapterView<?> parent, View view,
 				int position, long id) {
 			// TODO 自動產生的方法 Stub
-			Toast.makeText(mContext, "科目一：你選的是 " + strTwo[position] + " 分",
+			Toast.makeText(
+					mContext,
+					getResources().getString(R.string.YouChoose)
+							+ strTwo[position]
+							+ getResources().getString(R.string.Fen2),
 					Toast.LENGTH_SHORT).show();
 
 			fen = position + 2;
@@ -326,7 +411,11 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 		public void onItemSelected(AdapterView<?> parent, View view,
 				int position, long id) {
 			// TODO 自動產生的方法 Stub
-			Toast.makeText(mContext, "科目二：你選的是 " + strTwo[position] + " 分",
+			Toast.makeText(
+					mContext,
+					getResources().getString(R.string.YouChoose)
+							+ strTwo[position]
+							+ getResources().getString(R.string.Fen2),
 					Toast.LENGTH_SHORT).show();
 
 			fen2 = position + 2;
@@ -346,7 +435,11 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 		public void onItemSelected(AdapterView<?> parent, View view,
 				int position, long id) {
 			// TODO 自動產生的方法 Stub
-			Toast.makeText(mContext, "科目一：你選的是 " + strTwenty[position] + " 米",
+			Toast.makeText(
+					mContext,
+					getResources().getString(R.string.YouChoose)
+							+ strTwenty[position]
+							+ getResources().getString(R.string.Mi2),
 					Toast.LENGTH_SHORT).show();
 
 			miShu = (position + 2) * 10;
@@ -366,7 +459,11 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 		public void onItemSelected(AdapterView<?> parent, View view,
 				int position, long id) {
 			// TODO 自動產生的方法 Stub
-			Toast.makeText(mContext, "科目二：你選的是 " + strTwenty[position] + " 米",
+			Toast.makeText(
+					mContext,
+					getResources().getString(R.string.YouChoose)
+							+ strTwenty[position]
+							+ getResources().getString(R.string.Mi2),
 					Toast.LENGTH_SHORT).show();
 
 			miShu2 = (position + 2) * 10;
@@ -386,7 +483,11 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 		public void onItemSelected(AdapterView<?> parent, View view,
 				int position, long id) {
 			// TODO 自動產生的方法 Stub
-			Toast.makeText(mContext, "包皮成本：你選的是 " + strTwenty[position] + " 米",
+			Toast.makeText(
+					mContext,
+					getResources().getString(R.string.YouChoose)
+							+ strTwenty[position]
+							+ getResources().getString(R.string.Mi2),
 					Toast.LENGTH_SHORT).show();
 
 			miShu3 = (position + 2) * 10;
@@ -411,21 +512,21 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 
 		myTabhost.addTab(myTabhost
 				.newTabSpec("One")
-				.setIndicator("科目一",
+				.setIndicator(getResources().getString(R.string.One),
 						getResources().getDrawable(R.drawable.conf_artists))
 				.setContent(R.id.widget_layout_blue));
 		tabSize++;
 
 		myTabhost.addTab(myTabhost
 				.newTabSpec("Two")
-				.setIndicator("科目二",
+				.setIndicator(getResources().getString(R.string.Two),
 						getResources().getDrawable(R.drawable.conf_folder))
 				.setContent(R.id.widget_layout_green));
 		tabSize++;
 
 		myTabhost.addTab(myTabhost
 				.newTabSpec("Thr")
-				.setIndicator("包皮成本",
+				.setIndicator(getResources().getString(R.string.Three),
 						getResources().getDrawable(R.drawable.conf_person))
 				.setContent(R.id.widget_layout_red));
 		tabSize++;
@@ -594,10 +695,29 @@ public class MainActivity extends TabActivity implements OnTabChangeListener,
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		// 參數1:群組id, 參數2:itemId, 參數3:item順序, 參數4:item名稱
+		menu.add(0, 0, 0, getResources().getString(R.string.Explain_title));
+		menu.add(0, 1, 1, getResources().getString(R.string.Exit));
+		return super.onCreateOptionsMenu(menu);
+	}
 
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// 依據itemId來判斷使用者點選哪一個item
+		switch (item.getItemId()) {
+		case 0:
+			// 顯示說明
+			alert.showAlertDialog(this,
+					getResources().getString(R.string.Explain_title),
+					getResources().getString(R.string.Explain_content), true);
+			break;
+		case 1:
+			// 結束此程式
+			finish();
+			break;
+		default:
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 }

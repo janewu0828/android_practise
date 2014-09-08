@@ -1290,11 +1290,17 @@ containing a value of this type.
         public static final int ChooseThickness=0x7f0a0013;
         public static final int ChuangHsiang=0x7f0a001d;
         public static final int Clear=0x7f0a002b;
+        public static final int Exit=0x7f0a002c;
+        public static final int Explain_content=0x7f0a002e;
+        public static final int Explain_title=0x7f0a002d;
         public static final int Fen=0x7f0a0010;
+        public static final int Fen2=0x7f0a0037;
         public static final int HuiLu01=0x7f0a0025;
         public static final int HuiLu02=0x7f0a0028;
         public static final int KuanChing=0x7f0a0011;
+        public static final int Mi2=0x7f0a0038;
         public static final int MiShu=0x7f0a0014;
+        public static final int One=0x7f0a0039;
         public static final int OtherCostPC=0x7f0a0022;
         public static final int PakageCost=0x7f0a0024;
         public static final int Price01=0x7f0a0027;
@@ -1303,8 +1309,11 @@ containing a value of this type.
         public static final int PriceTun=0x7f0a0019;
         public static final int SumPaoPi=0x7f0a0021;
         public static final int Thickness=0x7f0a0012;
+        public static final int Three=0x7f0a003b;
+        public static final int Two=0x7f0a003a;
         public static final int Weight=0x7f0a0015;
         public static final int WeightPC=0x7f0a0018;
+        public static final int YouChoose=0x7f0a0036;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f0a0001;
@@ -1348,17 +1357,26 @@ containing a value of this type.
         public static final int action_settings=0x7f0a000f;
         public static final int app_name=0x7f0a000d;
         public static final int hello_world=0x7f0a000e;
+        public static final int txtPakageCost3_error=0x7f0a0033;
+        public static final int txtPrice33_error=0x7f0a0035;
+        public static final int txtPrice3_error=0x7f0a0034;
+        public static final int txtSumPaoPi3_error=0x7f0a0032;
+        public static final int txtWeight2_error=0x7f0a0030;
+        public static final int txtWeightPC3_error=0x7f0a0031;
+        public static final int txtWeight_error=0x7f0a002f;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
 
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
 
         
 

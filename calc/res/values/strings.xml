@@ -32,5 +32,21 @@
     <string name="ChooseHuiLu02">(Please Input Hui Lu 02)</string>
     <string name="Price02">Price 02: </string>
     <string name="Clear">Clear</string>
+    <string name="Exit">Exit</string>
+    <string name="Explain_title">Explain</string>
+    <string name="Explain_content">Kuan Ching= Fen*3.175\nWeight= (Fen*3.175-Thickness)*Thickness*0.028*Mi\nPao Pi= Price*Mi\nPakage Cost= Weight*((Price+Chia Kun)/1000)+Chuang Hsiang+Pao Pi+Other Cost\nPrice 01= Pakage Cost*Hui Lu\nPrice 02= Price 01*Hui Lu</string>
+    <string name="txtWeight_error">Weight: Please Input Thickness</string>
+    <string name="txtWeight2_error">Weight: Please Input Thickness</string>
+    <string name="txtWeightPC3_error">Weight(PC): Please Input 科目一、科目二 Thickness</string>
+    <string name="txtSumPaoPi3_error">Pao Pi: Please Input Price(Mi)</string>
+    <string name="txtPakageCost3_error">Pakage Cost: Please Input Price, Chia Kun, Chuang Hsiang and Other Cost</string>
+    <string name="txtPrice3_error">Price 01: Please Input Hui Lu 01</string>
+    <string name="txtPrice33_error">Price 02: Please Input Hui Lu 02</string>
+    <string name="YouChoose">Choose\t</string>
+    <string name="Fen2">\tfen</string>
+    <string name="Mi2">\tmi</string>
+    <string name="One">科目一</string>
+    <string name="Two">科目二</string>
+    <string name="Three">包皮成本</string>
 
 </resources>

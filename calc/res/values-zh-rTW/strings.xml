@@ -31,5 +31,21 @@
     <string name="ChooseHuiLu02">(請輸入匯率2)</string>
     <string name="Price02">金額2：</string>
     <string name="Clear">清除</string>
+    <string name="Exit">離開</string>
+    <string name="Explain_title">說明</string>
+    <string name="Explain_content">管徑= 分*3.175\n重量= (分*3.175-厚度)*厚度*0.028*米數\n包皮總和= 價格*米數\n每箱成本= 總重*((價格+加工)/1000)+裝箱+包皮總和+其他費用\n金額1= 每箱成本*匯率\n金額2= 金額1*匯率</string>
+    <string name="txtWeight_error">科目一重量：請輸入厚度</string>
+    <string name="txtWeight2_error">科目二重量：請輸入厚度</string>
+    <string name="txtWeightPC3_error">總重(PC)：請輸入科目一、科目二厚度</string>
+    <string name="txtSumPaoPi3_error">包皮總和：請輸入價格(米)</string>
+    <string name="txtPakageCost3_error">每箱成本：請輸入價格、加工、裝箱以及其他費用</string>
+    <string name="txtPrice3_error">金額1：請輸入匯率1</string>
+    <string name="txtPrice33_error">金額2：請輸入匯率2</string>
+    <string name="YouChoose">你選的是\t</string>
+    <string name="Fen2">\t分</string>
+    <string name="Mi2">\t米</string>
+    <string name="One">科目一</string>
+    <string name="Two">科目二</string>
+    <string name="Three">包皮成本</string>
 
 </resources>
