@@ -396,9 +396,8 @@ int layout abc_search_view 0x7f030016
 int layout abc_simple_decor 0x7f030017
 int layout activity_main 0x7f030018
 int layout fragment_main 0x7f030019
-int layout main 0x7f03001a
-int layout spinner_layout 0x7f03001b
-int layout support_simple_spinner_dropdown_item 0x7f03001c
+int layout spinner_layout 0x7f03001a
+int layout support_simple_spinner_dropdown_item 0x7f03001b
 int menu main 0x7f0c0000
 int string Calc 0x7f0a0017
 int string ChiaKunTun 0x7f0a001b
