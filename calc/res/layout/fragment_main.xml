@@ -64,7 +64,7 @@
                 android:ems="10"
                 android:hint="@string/ChooseThickness"
                 android:inputType="numberDecimal"
-                android:text="0.51" >
+                android:text="" >
 
                 <requestFocus />
             </EditText>
@@ -174,7 +174,7 @@
                 android:ems="10"
                 android:hint="@string/ChooseThickness"
                 android:inputType="numberDecimal"
-                android:text="0.61" >
+                android:text="" >
 
                 <requestFocus />
             </EditText>
@@ -280,7 +280,7 @@
                         android:ems="10"
                         android:hint="@string/ChoosePriceTun"
                         android:inputType="numberDecimal"
-                        android:text="8520" >
+                        android:text="" >
 
                         <requestFocus />
                     </EditText>
@@ -302,7 +302,7 @@
                         android:ems="10"
                         android:hint="@string/ChooseChiaKunTun"
                         android:inputType="numberDecimal"
-                        android:text="930" >
+                        android:text="" >
                     </EditText>
 
                     <TextView
@@ -322,7 +322,7 @@
                         android:ems="10"
                         android:hint="@string/ChooseChuangHsiang"
                         android:inputType="numberDecimal"
-                        android:text="0" >
+                        android:text="" >
                     </EditText>
 
                     <TextView
@@ -342,7 +342,7 @@
                         android:ems="10"
                         android:hint="@string/ChoosePriceMi"
                         android:inputType="numberDecimal"
-                        android:text="0.25" >
+                        android:text="" >
                     </EditText>
 
                     <TextView
@@ -394,7 +394,7 @@
                         android:ems="10"
                         android:hint="@string/ChooseOtherCostPC"
                         android:inputType="numberDecimal"
-                        android:text="2.29" >
+                        android:text="" >
                     </EditText>
 
                     <TextView
@@ -431,7 +431,7 @@
                         android:ems="10"
                         android:hint="@string/ChooseHuiLu01"
                         android:inputType="numberDecimal"
-                        android:text="3.0" >
+                        android:text="" >
                     </EditText>
 
                     <TextView
@@ -468,7 +468,7 @@
                         android:ems="10"
                         android:hint="@string/ChooseHuiLu02"
                         android:inputType="numberDecimal"
-                        android:text="30" >
+                        android:text="" >
                     </EditText>
 
                     <TextView
