@@ -1,0 +1,22 @@
+import android.provider.Settings.Secure;
+private String uuid = new String();
+private TextView txt;
+
+txt = (TextView) findViewById(R.id.txt);
+uuid = Secure.getString(this.getContentResolver(),Secure.ANDROID_ID);
+txt.setText(uuid);
+System.out.println("now= "+uuid+", original= e5fee337d4e0deee");
+
+>adb shell
+
+# su
+su
+
+# sqlite3 data/data/com.android.providers.settings/databases/settings.db
+sqlite3 data/data/com.android.providers.settings/databases/settings.db
+SQLite version 3.7.4
+Enter ".help" for instructions
+Enter SQL statements terminated with a ";"
+
+sqlite> update secure set value='e5fee337d4e0daaa' where name='android_id';
+update secure set value='e5fee337d4e0daaa' where name='android_id';
