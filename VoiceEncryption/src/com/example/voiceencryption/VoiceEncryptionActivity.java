@@ -7,7 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.app.Activity;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -20,12 +19,12 @@ public class VoiceEncryptionActivity extends Activity implements
 		OnClickListener {
 	private static final String TAG = "VoiceEncryptionActivity";
 	private static final String seed = "guess"; // 种子
-	private MediaPlayer mPlayer;
+
 	private Button mPlayButton;
 	private Button mEncryptionButton;
 	private Button mDecryptionButton;
 	private File sdCard = Environment.getExternalStorageDirectory();
-	private File oldFile = new File(sdCard, "file.txt");
+	private File oldFile = new File(sdCard, "Guess A of hearts_20150130.apk");
 	// 音频文件的路径，在res\raw\recording_old.3gpp中找到音频文件，再放到外部存储的根目录下。用于测试
 	private FileInputStream fis = null;
 	private FileOutputStream fos = null;
@@ -34,7 +33,6 @@ public class VoiceEncryptionActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_voice_encryption);
-		mPlayButton = (Button) findViewById(R.id.playButton);
 		mPlayButton.setOnClickListener(this);
 		mEncryptionButton = (Button) findViewById(R.id.encryptionButton);
 		mEncryptionButton.setOnClickListener(this);
@@ -42,47 +40,13 @@ public class VoiceEncryptionActivity extends Activity implements
 		mDecryptionButton.setOnClickListener(this);
 
 	}
-
+	
+	boolean isSuccess = false;
 	@SuppressWarnings("static-access")
-	@Override
+	@Override	
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.playButton:
-			if (mPlayer != null) {
-				mPlayer.release();
-				mPlayer = null;
-			}
-			// mPlayer = MediaPlayer.create(this, R.raw.recording_old);
-			boolean isSuccess = true;
-			try {
-				fis = new FileInputStream(oldFile);
-				mPlayer = new MediaPlayer();
-				mPlayer.setDataSource(fis.getFD());
-				mPlayer.prepare(); // 去掉会出错 
-				mPlayer.start();
-			} catch (FileNotFoundException e) {
-				isSuccess = false;
-				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				isSuccess = false;
-				e.printStackTrace();
-			} catch (IllegalStateException e) {
-				isSuccess = false;
-				e.printStackTrace();
-			} catch (IOException e) {
-				isSuccess = false;
-				e.printStackTrace();
-			} finally {
-				try {
-					fis.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			if (!isSuccess)
-				Toast.makeText(this, "播放失败", Toast.LENGTH_SHORT).show();
-			break;
-
+		
 		case R.id.encryptionButton:
 			// 加密保存 
 			isSuccess = true;

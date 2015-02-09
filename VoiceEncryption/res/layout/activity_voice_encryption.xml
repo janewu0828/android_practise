@@ -5,19 +5,9 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <Button
-        android:id="@+id/playButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="120dp"
-        android:text="播放" />
-
-    <Button
         android:id="@+id/encryptionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/play"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="76dp"
         android:text="加密保存" />
@@ -26,9 +16,9 @@
         android:id="@+id/decryptionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/playButton"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="119dp"
+        android:layout_marginTop="61dp"
         android:text="解密保存" />
 
 </RelativeLayout>
