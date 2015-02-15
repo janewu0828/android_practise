@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <EditText
+        android:id="@+id/main_input_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/main_encrypt_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/main_input_edittext"
+        android:layout_below="@+id/main_input_edittext"
+        android:layout_marginTop="18dp"
+        android:text="Encrypt" />
+
+    <TextView
+        android:id="@+id/main_show_encrypt_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/main_encrypt_button"
+        android:layout_below="@+id/main_encrypt_button"
+        android:layout_marginTop="20dp"
+        android:text="AES 256 Test" />
+
+    <Button
+        android:id="@+id/main_decrypt_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/main_encrypt_button"
+        android:layout_alignRight="@+id/main_input_edittext"
+        android:text="Decrypt" />
+
+</RelativeLayout>
