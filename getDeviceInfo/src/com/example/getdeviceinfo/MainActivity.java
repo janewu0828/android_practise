@@ -21,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
 		TextView txt = (TextView) findViewById(R.id.txt);
 		txt.setText("IMEI: " + imei + "\n" + "UUID: " + uuid);
 
-		System.out.println("IMEI:" + imei + "\n UUID(now): " + uuid
+		System.out.println("IMEI:" + imei + "\n" + "UUID(now): " + uuid
 				+ ", UUID(org): 890f9b50-749d-31aa-a06f-6caf63379ed2");
 		// 01-22 12:07:25.250: I/System.out(27072): uuid(now):
 		// 890f9b50-749d-31aa-a06f-6caf63379ed2, uuid(org):
