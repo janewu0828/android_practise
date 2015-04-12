@@ -29,7 +29,12 @@ public class MainActivity extends ActionBarActivity {
 		try {
 			// 获取一个文件的特征信息，签名信息。
 			// File file = new File(path);
-			File file = new File(sdCard, path);
+			// File file = new File(sdCard, path);
+			String sourceFilePath = "/data/app/";
+			File sourceFile = new File(sourceFilePath);
+			File file = new File(sourceFile, path);
+			Log.e(TAG, "file= " + file.getAbsolutePath());
+
 			// md5
 			MessageDigest digest = MessageDigest.getInstance("md5");
 			FileInputStream fis = new FileInputStream(file);
@@ -59,7 +64,6 @@ public class MainActivity extends ActionBarActivity {
 
 	public static String getArchivePackageName(Context ctx,
 			String archiveFilePath) {
-		System.out.println("PakageUtil:" + archiveFilePath);
 		Log.e(TAG, "PakageUtil= " + archiveFilePath);
 
 		PackageInfo pInfo = ctx.getPackageManager().getPackageArchiveInfo(
@@ -70,22 +74,38 @@ public class MainActivity extends ActionBarActivity {
 		return pInfo.packageName;
 	}
 
-	private String getAppId() {
-		String appId = "";
+	private String getAppId2(Context context) {
+		String str = "";
 
 		// ---get hash code of apk---
-		String PACKAGE_NAME = getApplicationContext().getPackageName();
+		String PACKAGE_NAME = context.getPackageName();
 		String apkName = "";
-		String apkPath = Environment.getDataDirectory() + "/app/" + apkName;
+		String apkPath = "";
 		File apkFile = null;
 		int i = 0;
 		int isNext = 0;
 
 		// ---get apk file name---
+		for (i = 1; isNext < 1; i++) {
+			apkName = PACKAGE_NAME + "-" + i + ".apk";
+			System.out.println("fileName= " + apkName);
+
+			apkPath = Environment.getDataDirectory() + "/app/" + apkName;
+			apkFile = new File(apkPath);
+			System.out.println("path= " + apkFile.getAbsolutePath());
+
+			if (!apkFile.exists()) {
+				System.out.println("no exists= " + apkFile.getAbsolutePath());
+
+			} else {
+				System.out.println("exists= " + apkFile.getAbsolutePath());
+				isNext++;
+			}
+		}
 
 		// ---get hash code of apk---
 		try {
-			appId = Hash.sha256(apkFile);
+			str = Hash.sha256(apkFile);
 			// System.out.println("appId= " + appId);
 			// System.out.println("appId length= " + appId.length());
 
@@ -96,7 +116,7 @@ public class MainActivity extends ActionBarActivity {
 
 		}
 
-		return appId;
+		return str;
 	}
 
 	@Override
@@ -104,15 +124,17 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		String md5 = getFileMd5("encryptJar.apk");
-		System.out.println(md5);
-		Log.e(TAG, md5);
-
 		String PACKAGE_NAME = getApplicationContext().getPackageName();
 		Log.e(TAG, "pkg= " + PACKAGE_NAME);
 
+		String str = getAppId2(getApplicationContext());
+		Log.e(TAG, "str= " + str);
+
+		// String md5 = getFileMd5(PACKAGE_NAME + ".apk");
+		// Log.e(TAG, "md5= " + md5);
+
 		String path = Environment.getDataDirectory().toString();
-		System.out.println(path);
+		Log.e(TAG, "path2= " + path);
 		String result = getArchivePackageName(getApplicationContext(), path);
 		Log.e(TAG, "pkg2= " + result);
 	}
