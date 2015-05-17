@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">校園逃走中</string>
+    <string name="hello_world">你好!</string>
+    <string name="menu_settings">設定</string>
+
+    <!-- activity_index -->
+    <string name="btn_instructions">說明</string>
+    <string name="btn_login">註冊 / 登入</string>
+
+    <!-- activity_register -->
+    <string name="txt_name">名字：</string>
+    <string name="txt_email">電子郵件：</string>
+    <string name="txt_role">角色：</string>
+    <string name="rad_player0">倖存者</string>
+    <string name="rad_player1">獵人</string>
+    <string name="btn_register">註冊 / 登入</string>
+    <!-- <string name="btn_login">btnLogin登入(！)</string> -->
+
+
+    <!-- RegisterActivity -->
+    <string name="msg_alertInternet">網路連接錯誤</string>
+    <string name="msg_alertInternetConnection">請連接到有效的網路環境</string>
+    <string name="msg_alertConfiguration">設置錯誤！</string>
+    <string name="msg_alertConfigurationCorrect">請設置您的 Server URL 及 GCM Sender ID</string>
+    <string name="msg_alertRegError">註冊錯誤!</string>
+    <string name="msg_alertRegErrorCorrect">請輸入您的詳細訊息</string>
+
+    <!-- activity_main -->
+    <!-- <string name="btn_loc">btnLoc位置</string> -->
+
+
+    <!-- MainActivity -->
+    <string name="msg_toastRegistered">已註冊並連接到 GCM 上</string>
+    <string name="txt_newMessage">新訊息: </string>
+
+    <!-- GCM -->
+    <string name="title_activity_main">推送通知</string>
+    <string name="error_config">請重新設定 %1$s constant 並重新編譯這個 app。</string>
+    <string name="already_registered">裝置已註冊到伺服器。</string>
+    <string name="msg_gcm_registered">您的裝置已於 GCM上 註冊過</string>
+    <string name="gcm_registered">From GCM: 裝置已註冊成功！</string>
+    <string name="gcm_unregistered">From GCM: 裝置未註冊成功！</string>
+    <string name="gcm_message">From GCM: 您有封訊息!</string>
+    <string name="gcm_error">From GCM: 錯誤 (%1$s).</string>
+    <string name="gcm_recoverable_error">From GCM: 恢復錯誤 (%1$s).</string>
+    <string name="gcm_deleted">From GCM: 伺服器已刪除 %1$d 個待處理的消息！</string>
+    <string name="server_registering">在伺服器上試圖 (嘗試 %1$d/%2$d ) 註冊裝置。</string>
+    <string name="server_registered">From Server: 成功地新增裝置！</string>
+    <string name="server_unregistered">From Server: 成功地移除裝置！</string>
+    <string name="server_register_error">在 %1$d 個嘗試後，無法在伺服器上註冊裝置。</string>
+    <string name="server_unregister_error">無法在伺服器上移除裝置 (%1$s)。</string>
+    <string name="options_register">註冊</string>
+    <string name="options_unregister">未註冊</string>
+    <string name="options_clear">清除</string>
+    <string name="options_exit">離開</string>
+
+    <!-- activity_location3 -->
+    <string name="btn_myloc">查詢我的位置與景點距離</string>
+    <string name="txt_txt1"></string>
+    <string name="btn_btnMap">Button地圖</string>
+
+    <!-- Location3 -->
+    <string name="poi_lib">圖書館 </string>
+    <string name="poi_ib">IB大樓 </string>
+    <string name="poi_dormitory1">學宿 1 </string>
+    <string name="poi_stu">學生活動中心 </string>
+    <string name="txt_myLon">我的座標 - 經度 :  </string>
+    <string name="txt_myLat">  ，緯度 :  </string>
+    <string name="txt_place">  ，地點 :  </string>
+    <string name="txt_distance">  , 距離為 :  </string>
+    <string name="txt_mytxtTrue">mytxt true</string>
+    <string name="txt_mytxtFalse">mytxt false</string>
+    <string name="txt_m"> 公尺</string>
+    <string name="txt_km"> 公里</string>
+
+    <!-- activity_polyline_polygon -->
+    <string name="bt_clearMap">清除</string>
+    <string name="bt_resetMap">重置</string>
+    <string name="bt_myLoc">定位</string>
+    <string name="txt_timesup">時間到了，遊戲結束!</string>
+    <string name="txt_timesupIsMyLoc">任務失敗。請盡快返回集合點</string>
+    <string name="txt_timesup2">時間到了</string>
+
+    <!-- PolylinesPolygonsActivity -->
+    <string name="txt_whereMyLocError">糟糕，您目前已不在校園內，請盡快返回</string>
+    <string name="txt_title_isMyLocCorrect">恭喜！</string>
+    <string name="txt_isMyLocCorrect">恭喜，您已到達指定的地點內哦</string>
+    <string name="txt_isMyLocError">哎呀，您尚未到達指定的地點，加緊腳步哦</string>
+    <string name="txt_timesupHunter">警告！出動獵人了</string>
+    <string name="txt_newTaskError">啊喔，當前任務尚未完成，目前無法接收新任務：</string>
+    <string name="txt_newMessageError">啊喔，遊戲已經結束，目前無法接收新任務。請盡快返回集合點</string>
+    <string name="txt_info_player">玩家資訊</string>
+    <string name="txt_logout">登出</string>
+    <string name="txt_task">任務：</string>
+
+    <!-- Map -->
+    <string name="marker_title_myloc">我的位置</string>
+    <string name="marker_snippet_myloc">我的位置</string>
+    <string name="marker_title_lib">圖書館</string>
+    <string name="marker_snippet_lib">小心獵人的追擊</string>
+    <string name="marker_title_ib">國際大樓</string>
+    <string name="marker_snippet_ib"></string>
+    <string name="marker_title_dormitory1">學生宿舍 1</string>
+    <string name="marker_snippet_dormitory1">記得利用身邊的掩護物</string>
+    <string name="marker_title_stu">學生活動中心</string>
+    <string name="marker_snippet_stu">小心獵人就在暗處喔</string>
+    <string name="marker_title_taroko">太魯閣國家公園</string>
+    <string name="marker_snippet_taroko">太魯閣國家公園前身為日治時期成立之次高太魯閣國立公園，1986年11月28日成立管理處。位於台灣東部，地跨花蓮縣、台中市、南投縣三個行政區。</string>
+    <string name="marker_title_yushan">玉山國家公園</string>
+    <string name="marker_snippet_yushan">玉山國家公園是台灣第2座國家公園，1985年4月10日成立管理處，面積10萬5,490公頃，屬一典型高山國家公園。</string>
+    <string name="marker_title_kenting">墾丁國家公園</string>
+    <string name="marker_snippet_kenting">墾丁國家公園是台灣第1座成立的國家公園，1984年1月1日成立管理處，三面臨海，為我國少數同時涵蓋陸域與海域的國家公園之一，海域面積15206.09公頃、陸域面積18083.50公頃，合計共33,289.59公頃。</string>
+    <string name="marker_title_yangmingshan">陽明山國家公園</string>
+    <string name="marker_snippet_yangmingshan">陽明山國家公園前身為日治時期成立之大屯國立公園，1985年9月16日成立管理處。位於台北市近郊，行政區域包括同市北投區、士林區，新北市的萬里區、金山區、三芝區、淡水區一帶；地理上則屬於大屯火山彙區域。</string>
+    <string name="map_not_ready">地圖尚未準備好</string>
+
+</resources>

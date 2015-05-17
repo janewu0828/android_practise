@@ -1,0 +1,118 @@
+<resources>
+
+    <string name="app_name">校園逃走中</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+
+    <!-- activity_index -->
+    <string name="btn_instructions">Instructions</string>
+    <string name="btn_login">Register / Login</string>
+
+    <!-- activity_register -->
+    <string name="txt_name">Full Name:</string>
+    <string name="txt_email">Email:</string>
+    <string name="txt_role">Role: </string>
+    <string name="rad_player0">Survivor</string>
+    <string name="rad_player1">Hunter</string>
+    <string name="btn_register">Register / Login</string>
+    <!-- <string name="btn_login">btnLogin</string> -->
+
+
+    <!-- RegisterActivity -->
+    <string name="msg_alertInternet">Internet Connection Error</string>
+    <string name="msg_alertInternetConnection">Please connect to working Internet connection</string>
+    <string name="msg_alertConfiguration">Configuration Error!</string>
+    <string name="msg_alertConfigurationCorrect">Please set your Server URL and GCM Sender ID</string>
+    <string name="msg_alertRegError">Registration Error!</string>
+    <string name="msg_alertRegErrorCorrect">Please enter your details</string>
+
+    <!-- activity_main -->
+    <!-- <string name="btn_loc">btnLoc</string> -->
+
+
+    <!-- MainActivity -->
+    <string name="msg_toastRegistered">Already registered with GCM</string>
+    <string name="txt_newMessage">New Message:  </string>
+
+    <!-- GCM -->
+    <string name="title_activity_main">Push Notifications</string>
+    <string name="error_config">Please set the %1$s constant and recompile the app.</string>
+    <string name="already_registered">Device is already registered on server.</string>
+    <string name="msg_gcm_registered">Your device registred with GCM</string>
+    <string name="gcm_registered">From GCM: device successfully registered!</string>
+    <string name="gcm_unregistered">From GCM: device successfully unregistered!</string>
+    <string name="gcm_message">From GCM: you got message!</string>
+    <string name="gcm_error">From GCM: error (%1$s).</string>
+    <string name="gcm_recoverable_error">From GCM: recoverable error (%1$s).</string>
+    <string name="gcm_deleted">From GCM: server deleted %1$d pending messages!</string>
+    <string name="server_registering">Trying (attempt %1$d/%2$d) to register device on Server.</string>
+    <string name="server_registered">From Server: successfully added device!</string>
+    <string name="server_unregistered">From Server: successfully removed device!</string>
+    <string name="server_register_error">Could not register device on Server after %1$d attempts.</string>
+    <string name="server_unregister_error">Could not unregister device on Server (%1$s).</string>
+    <string name="options_register">Register</string>
+    <string name="options_unregister">Unregister</string>
+    <string name="options_clear">Clear</string>
+    <string name="options_exit">Exit</string>
+
+    <!-- activity_location3 -->
+    <string name="btn_myloc">Check my location</string>
+    <string name="txt_txt1">TextView</string>
+    <string name="btn_btnMap">Button Map</string>
+
+    <!-- Location3 -->
+    <string name="poi_lib">Library </string>
+    <string name="poi_ib">IB </string>
+    <string name="poi_dormitory1">Dormitory 1 </string>
+    <string name="poi_stu">Student Activities Center </string>
+    <string name="txt_myLon">My position - Longitude:  </string>
+    <string name="txt_myLat">  , Latitude:  </string>
+    <string name="txt_place">  , Place:  </string>
+    <string name="txt_distance">  , Distance:  </string>
+    <string name="txt_mytxtTrue">mytxt true</string>
+    <string name="txt_mytxtFalse">mytxt false</string>
+    <string name="txt_m"> m</string>
+    <string name="txt_km"> km</string>
+
+    <!-- activity_polyline_polygon -->
+    <string name="bt_clearMap">Clear</string>
+    <string name="bt_resetMap">Reset</string>
+    <string name="bt_myLoc">location</string>
+    <string name="txt_timesup">Times Up, Game Over!</string>
+    <string name="txt_timesupIsMyLoc">Times Up</string>
+    <string name="txt_timesup2">Times Up</string>
+
+    <!-- PolylinesPolygonsActivity -->
+    <string name="txt_whereMyLocError">Sorry, you are not arrived the place.</string>
+    <string name="txt_title_isMyLocCorrect">Congratulation ! </string>
+    <string name="txt_isMyLocCorrect">Congratulations, you are already arrived the place.</string>
+    <string name="txt_isMyLocError">Oh, you are not arrived the place.</string>
+    <string name="txt_timesupHunter">Warning! Hunter</string>
+    <string name="txt_newTaskError">Oh, current task is not completed, unable to receive a new task: </string>
+    <string name="txt_newMessageError">Gameover, you can not recevied new message.</string>
+    <string name="txt_info_player">Player Info</string>
+    <string name="txt_logout">Logout</string>
+    <string name="txt_task">Task: </string>
+
+    <!-- Map -->
+    <string name="marker_title_myloc">myloc</string>
+    <string name="marker_snippet_myloc">my location</string>
+    <string name="marker_title_lib">圖書館</string>
+    <string name="marker_snippet_lib">Library</string>
+    <string name="marker_title_ib">國際大樓</string>
+    <string name="marker_snippet_ib">International Building</string>
+    <string name="marker_title_dormitory1">學生宿舍 1</string>
+    <string name="marker_snippet_dormitory1">Students dormitory 1</string>
+    <string name="marker_title_stu">學生活動中心</string>
+    <string name="marker_snippet_stu">Student Activities Center</string>
+    <string name="marker_title_taroko">太魯閣國家公園</string>
+    <string name="marker_snippet_taroko">太魯閣國家公園前身為日治時期成立之次高太魯閣國立公園，1986年11月28日成立管理處。位於台灣東部，地跨花蓮縣、台中市、南投縣三個行政區。</string>
+    <string name="marker_title_yushan">玉山國家公園</string>
+    <string name="marker_snippet_yushan">玉山國家公園是台灣第2座國家公園，1985年4月10日成立管理處，面積10萬5,490公頃，屬一典型高山國家公園。</string>
+    <string name="marker_title_kenting">墾丁國家公園</string>
+    <string name="marker_snippet_kenting">墾丁國家公園是台灣第1座成立的國家公園，1984年1月1日成立管理處，三面臨海，為我國少數同時涵蓋陸域與海域的國家公園之一，海域面積15206.09公頃、陸域面積18083.50公頃，合計共33,289.59公頃。</string>
+    <string name="marker_title_yangmingshan">陽明山國家公園</string>
+    <string name="marker_snippet_yangmingshan">陽明山國家公園前身為日治時期成立之大屯國立公園，1985年9月16日成立管理處。位於台北市近郊，行政區域包括同市北投區、士林區，新北市的萬里區、金山區、三芝區、淡水區一帶；地理上則屬於大屯火山彙區域。</string>
+    <string name="map_not_ready">Map not ready</string>
+
+</resources>
