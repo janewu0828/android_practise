@@ -14,15 +14,15 @@ import android.widget.Button;
 
 public class MainActivity extends ActionBarActivity {
 	private Context context;
-	private ProgressDialog pd;
+//	private ProgressDialog pd;
 	private Button b;
 
 	@Override
 	protected void onDestroy() {
-		if (pd != null) {
-			pd.dismiss();
-			b.setEnabled(true);
-		}
+//		if (pd != null) {
+//			pd.dismiss();
+//			b.setEnabled(true);
+//		}
 		super.onDestroy();
 	}
 
@@ -37,43 +37,47 @@ public class MainActivity extends ActionBarActivity {
 
 			@Override
 			public void onClick(View v) {
-				v.setEnabled(false);
-				AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
-
-					@Override
-					protected void onPreExecute() {
-						pd = new ProgressDialog(context);
-						pd.setTitle("Processing...");
-						pd.setMessage("Please wait.");
-						pd.setCancelable(false);
-						pd.setIndeterminate(true);
-						pd.show();
-					}
-
-					@Override
-					protected Void doInBackground(Void... arg0) {
-						try {
-							// Do something...
-							Thread.sleep(5000);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						return null;
-					}
-
-					@Override
-					protected void onPostExecute(Void result) {
-						if (pd != null) {
-							pd.dismiss();
-							b.setEnabled(true);
-						}
-					}
-
-				};
+				TestAsyncTask task = new TestAsyncTask(context);
 				task.execute((Void[]) null);
+						
+//				v.setEnabled(false);
+//				AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+//
+//					@Override
+//					protected void onPreExecute() {
+//						pd = new ProgressDialog(context);
+//						pd.setTitle("Processing...");
+//						pd.setMessage("Please wait.");
+//						pd.setCancelable(false);
+//						pd.setIndeterminate(true);
+//						pd.show();
+//					}
+//
+//					@Override
+//					protected Void doInBackground(Void... arg0) {
+//						try {
+//							// Do something...
+//							Thread.sleep(5000);
+//						} catch (InterruptedException e) {
+//							e.printStackTrace();
+//						}
+//						return null;
+//					}
+//
+//					@Override
+//					protected void onPostExecute(Void result) {
+//						if (pd != null) {
+//							pd.dismiss();
+//							b.setEnabled(true);
+//						}
+//					}
+//
+//				};
+//				task.execute((Void[]) null);
 			}
 		});
+		
+//		new DownloadFilesTask().execute(url1, url2, url3);
 	}
 
 	@Override
