@@ -51,6 +51,18 @@ public class MainActivity extends ActionBarActivity {
 			}
 		}
 	}
+	
+	@Override
+	protected void onPause() {
+	    // TODO Auto-generated method stub
+	    super.onPause();
+	   
+	    if (countToTen != null) {
+	        if (!countToTen.isInterrupted()) {
+	            countToTen.interrupt();
+	        }
+	    }
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
