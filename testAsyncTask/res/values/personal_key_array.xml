@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="personal_key_file_name">
+        <item>personal_key.txt</item>
+        <item>personal_key2.txt</item>
+        <item>personal_key3.txt</item>
+    </string-array>
+
+</resources>

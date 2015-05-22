@@ -4,5 +4,20 @@
     <string name="app_name">testAsyncTask</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="str_title">Guess which one is A of hearts?</string>
+    <string name="str_button">Play Again</string>
+    <string name="guess_result_true">Wow! You guessed it!! Clap your hands!</string>
+    <string name="guess_result_false">Oh, you guessed wrong!! Do you want to try again?</string>
+    <string name="alert_internet_error_title">Network connection is failed</string>
+    <string name="alert_internet_error_msg">Please check out the connection.</string>
+    <string name="toast_checkuser_true">Authentication is successful, the process will continue.</string>
+    <string name="alert_checkuser_error_title">Message</string>
+    <string name="alert_checkuser_error_msg">Authentication is failed, the process will be terminated.</string>
+    <string name="alert_personal_key_error_title">Message</string>
+    <string name="alert_personal_key_error_msg">Personal Key Error!!</string>
+    <string name="progress_loading_title">App Clone Attack Prevention and Detection (ACAPD)</string>
+    <string name="progress_loading_msg">Check App authorization status with App Security Enhancer…</string>
+    <string name="progress_checkJar">Check Jar…</string>
+    <string name="progress_dynamicLoadingJar">Dynamic LoadingJar…</string>
 
 </resources>

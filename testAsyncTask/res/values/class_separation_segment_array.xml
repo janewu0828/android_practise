@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="class_separation_segment_file_name">
+        <item>encrypted123.jar</item>
+        <item>encrypted20150514.jar</item>
+        <item>.jar</item>
+    </string-array>
+
+</resources>
