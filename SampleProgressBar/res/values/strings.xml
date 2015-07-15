@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Sample!</string>
+    <string name="app_name">Sample</string>
+    <string name="processing_step1">步驟1執行中...</string>
+    <string name="processing_step2">步驟2執行中...</string>
+    <string name="processing_step3">步驟3執行中...</string>
+    <string name="finish">完成。</string>
+</resources>
