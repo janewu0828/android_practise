@@ -1,12 +1,11 @@
 package com.example.testhandlerthread;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.os.Handler;
-
 import android.os.HandlerThread;
 
 public class MainActivity extends ActionBarActivity {
@@ -57,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
 
 	}
 
-	// 的工作內容
+	// 工作名稱 r1 的工作內容
 	private Runnable r1 = new Runnable() {
 
 		public void run() {
@@ -74,6 +73,7 @@ public class MainActivity extends ActionBarActivity {
 		public void run() {
 			// 做了很多事
 			// 顯示畫面的動作
+
 		}
 	};
 
