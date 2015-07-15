@@ -3,7 +3,10 @@ package com.example.getdeviceinfo;
 import android.support.v7.app.ActionBarActivity;
 import android.telephony.TelephonyManager;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.provider.Settings.Secure;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -14,9 +17,11 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		
 
 		String imei = getIMEI();
-		String uuid = getDeviceId(MainActivity.this);
+		String uuid = getUUID(MainActivity.this);
 
 		TextView txt = (TextView) findViewById(R.id.txt);
 		txt.setText("IMEI: " + imei + "\n" + "UUID: " + uuid);
@@ -29,6 +34,26 @@ public class MainActivity extends ActionBarActivity {
 		System.out.println("IMEI length: " + imei.length());
 		System.out.println("UUID length: " + uuid.length());
 
+	}
+	private static String uniqueID = null;
+	private static final String PREF_UNIQUE_ID = "PREF_UNIQUE_ID";
+	
+	public synchronized static String getUUID(Context context) {
+		if (uniqueID == null) {
+			SharedPreferences sharedPrefs = context.getSharedPreferences(
+					PREF_UNIQUE_ID, Context.MODE_PRIVATE);
+			uniqueID = Secure.getString(context.getContentResolver(),
+					Secure.ANDROID_ID);
+			if (uniqueID == null) {
+				uniqueID = Secure.getString(context.getContentResolver(),
+						Secure.ANDROID_ID);
+				Editor editor = sharedPrefs.edit();
+				editor.putString(PREF_UNIQUE_ID, uniqueID);
+				editor.commit();
+			}
+		}
+
+		return uniqueID;
 	}
 
 	private String getIMEI() {
