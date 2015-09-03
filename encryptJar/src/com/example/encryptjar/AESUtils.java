@@ -8,20 +8,173 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.NoSuchPaddingException;
+
 public class AESUtils {
-	public static byte[] encryptVoice(String seed, byte[] clearbyte)
+	private static String iv2 = "fedcba9876543210"; // 虛擬的 iv (需更改)
+	private static IvParameterSpec ivspec2;
+	private static SecretKeySpec keyspec2;
+	private static Cipher cipher2;
+	private String key2 = "";// personal_key
+
+	// private String key = "0123456789abcdef"; // personal_key
+
+	public AESUtils(String personal_key) {
+		super();
+
+		key2 = personal_key;
+		ivspec2 = new IvParameterSpec(iv2.getBytes());
+		keyspec2 = new SecretKeySpec(key2.getBytes(), "AES");
+
+		try {
+			cipher2 = Cipher.getInstance("AES/CBC/NoPadding");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public byte[] encryptEB(String text) throws Exception {
+		if (text == null || text.length() == 0)
+			throw new Exception("Empty string");
+
+		byte[] encrypted = null;
+
+		try {
+			cipher2.init(Cipher.ENCRYPT_MODE, keyspec2, ivspec2);
+
+			encrypted = cipher2.doFinal(padString(text).getBytes());
+		} catch (Exception e) {
+			throw new Exception("[encrypt] " + e.getMessage());
+		}
+
+		return encrypted;
+	}
+
+	public byte[] decryptEB(String code) throws Exception {
+		if (code == null || code.length() == 0)
+			throw new Exception("Empty string");
+
+		byte[] decrypted = null;
+
+		try {
+			cipher2.init(Cipher.DECRYPT_MODE, keyspec2, ivspec2);
+
+			decrypted = cipher2.doFinal(hexToBytes(code));
+		} catch (Exception e) {
+			throw new Exception("[decrypt] " + e.getMessage());
+		}
+		return decrypted;
+	}
+
+	public byte[] decryptCB(byte[] code) throws Exception {
+		if (code == null || code.length == 0)
+			throw new Exception("Empty code");
+
+		System.out.println("after if");
+
+		byte[] decrypted = null;
+
+		try {
+			System.out.println("in try");
+			cipher2.init(Cipher.DECRYPT_MODE, keyspec2, ivspec2);
+
+			System.out.println("2");
+			decrypted = cipher2.doFinal(code);
+
+//			System.out.println("3");
+//			// Remove trailing zeroes
+//			if (decrypted.length > 0) {
+//				System.out.println("in if");
+//				int trim = 0;
+//				for (int i = decrypted.length - 1; i >= 0; i--)
+//					if (decrypted[i] == 0)
+//						trim++;
+//
+//				if (trim > 0) {
+//					byte[] newArray = new byte[decrypted.length - trim];
+//					System.arraycopy(decrypted, 0, newArray, 0,
+//							decrypted.length - trim);
+//					decrypted = newArray;
+//				}
+//			}
+			System.out.println("after if");
+		} catch (Exception e) {
+			throw new Exception("[decrypt] " + e.getMessage());
+		}
+		return decrypted;
+	}
+
+//	static byte[] decrypt2(byte[] encrypted) throws Exception {
+//		// iv2 = "0000000000000000";
+//		// iv2 = "fedcba9876543210";
+//		ivspec2 = new IvParameterSpec(iv2.getBytes());
+//		cipher2.init(Cipher.DECRYPT_MODE, keyspec2, ivspec2);
+//		byte[] decrypted = cipher2.doFinal(encrypted);
+//		return decrypted;
+//	}
+
+	public static String bytesToHex(byte[] data) {
+		if (data == null) {
+			return null;
+		}
+
+		int len = data.length;
+		String str = "";
+		for (int i = 0; i < len; i++) {
+			if ((data[i] & 0xFF) < 16)
+				str = str + "0" + java.lang.Integer.toHexString(data[i] & 0xFF);
+			else
+				str = str + java.lang.Integer.toHexString(data[i] & 0xFF);
+		}
+		return str;
+	}
+
+	public static byte[] hexToBytes(String str) {
+		if (str == null) {
+			return null;
+		} else if (str.length() < 2) {
+			return null;
+		} else {
+			int len = str.length() / 2;
+			byte[] buffer = new byte[len];
+			for (int i = 0; i < len; i++) {
+				buffer[i] = (byte) Integer.parseInt(
+						str.substring(i * 2, i * 2 + 2), 16);
+			}
+			return buffer;
+		}
+	}
+
+	private static String padString(String source) {
+		char paddingChar = ' ';
+		int size = 16;
+		int x = source.length() % size;
+		int padLength = size - x;
+
+		for (int i = 0; i < padLength; i++) {
+			source += paddingChar;
+		}
+
+		return source;
+	}
+
+	public static byte[] encryptFile(String seed, byte[] clearbyte)
 			throws Exception {
 		byte[] rawKey = getRawKey(seed.getBytes());
 		byte[] result = encrypt(rawKey, clearbyte);
 		return result;
 	}
 
-	public static byte[] decryptVoice(String seed, byte[] encrypted)
-			throws Exception {
-		byte[] rawKey = getRawKey(seed.getBytes());
-		byte[] result = decrypt(rawKey, encrypted);
-		return result;
-	}
+	// public static byte[] decryptFile(String seed, byte[] encrypted)
+	// throws Exception {
+	// byte[] rawKey = getRawKey(seed.getBytes());
+	// byte[] result = decrypt(rawKey, encrypted);
+	// return result;
+	// }
 
 	private static byte[] getRawKey(byte[] seed) throws Exception {
 		KeyGenerator kgen = KeyGenerator.getInstance("AES");
@@ -51,4 +204,10 @@ public class AESUtils {
 		byte[] decrypted = cipher.doFinal(encrypted);
 		return decrypted;
 	}
+
+	public void setPersonalKey(String key2) {
+		this.key2 = key2;
+		keyspec2 = new SecretKeySpec(key2.getBytes(), "AES");
+	}
+
 }
