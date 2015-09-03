@@ -6,6 +6,6 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="lib" path="/Users/jane/Documents/android20150210/android-sdk-macosx/platforms/android-15/android.jar"/>
+	<classpathentry kind="lib" path="/Volumes/Data/workspace/android_practise/1_專案檔_M10215037_M10209307_v4/AndroidPushNotificationsUsingGCM/libs/android.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
