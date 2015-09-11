@@ -62,9 +62,12 @@ public class MainActivity extends ActionBarActivity {
 
 					byte[] oldByte = new byte[(int) oldFile.length()];
 					fis.read(oldByte); // 读取
+					
+					AESUtils mAES = new AESUtils(seed);
 
 					// 加密
 					byte[] newByte = AESUtils_old.encryptVoice(seed, oldByte);
+//					byte[] newByte = mAES.encryptCB(oldByte);
 					oldFile = new File(sdCard + "/project/", outputFileName);
 					fos = new FileOutputStream(oldFile);
 					fos.write(newByte);
@@ -72,22 +75,28 @@ public class MainActivity extends ActionBarActivity {
 				} catch (FileNotFoundException e) {
 					isSuccess = false;
 					e.printStackTrace();
-					Log.e(TAG, e.getMessage());
+					Log.e(TAG, "FileNotFoundException= "+e.getMessage());
 				} catch (IOException e) {
 					isSuccess = false;
 					e.printStackTrace();
-					Log.e(TAG, e.getMessage());
+					Log.e(TAG, "IOException= "+e.getMessage());
 				} catch (Exception e) {
 					isSuccess = false;
 					e.printStackTrace();
-					Log.e(TAG, e.getMessage());
+					Log.e(TAG, "Exception= "+e.getMessage());
 				} finally {
 					try {
 						fis.close();
 						fos.close();
 					} catch (IOException e) {
 						e.printStackTrace();
-						Log.e(TAG, e.getMessage());
+						Log.e(TAG, "IOException= "+e.getMessage());
+					}catch (NullPointerException e) {
+						e.printStackTrace();
+						Log.e(TAG, "NullPointerException= "+e.getMessage());
+					}catch (Exception e) {
+						e.printStackTrace();
+						Log.e(TAG, "Exception= "+e.getMessage());
 					}
 				}
 
@@ -109,7 +118,7 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		public void onClick(View v) {
 			
-			MCrypt mcrypt = new MCrypt();
+//			MCrypt mcrypt = new MCrypt();
 //			try {
 //				/* 加密*/
 //				String encrypted = MCrypt.bytesToHex( mcrypt.encrypt("需加密的字符") );
@@ -134,7 +143,7 @@ public class MainActivity extends ActionBarActivity {
 				text_state.setText("seed is null !!!");
 				Log.e(TAG, "str is null" + str);
 			} else {
-				// 加密保存
+				// 解密保存
 				seed = str;
 				isSuccess = true;
 
@@ -143,9 +152,12 @@ public class MainActivity extends ActionBarActivity {
 
 					byte[] oldByte = new byte[(int) oldFile.length()];
 					fis.read(oldByte); // 读取
+					
+					AESUtils mAES = new AESUtils(seed);
 
-					// 加密
+					// 解密
 					byte[] newByte = AESUtils_old.decryptVoice(seed, oldByte);
+//					byte[] newByte = mAES.decryptCB(oldByte);
 					
 					oldFile = new File(sdCard + "/project/", outputFileName);
 					fos = new FileOutputStream(oldFile);
@@ -154,22 +166,22 @@ public class MainActivity extends ActionBarActivity {
 				} catch (FileNotFoundException e) {
 					isSuccess = false;
 					e.printStackTrace();
-					Log.e(TAG, e.getMessage());
+					Log.e(TAG, "FileNotFoundException= "+e.getMessage());
 				} catch (IOException e) {
 					isSuccess = false;
 					e.printStackTrace();
-					Log.e(TAG, e.getMessage());
+					Log.e(TAG, "IOException= "+e.getMessage());
 				} catch (Exception e) {
 					isSuccess = false;
 					e.printStackTrace();
-					Log.e(TAG, e.getMessage());
+					Log.e(TAG, "Exception= "+e.getMessage());
 				} finally {
 					try {
 						fis.close();
 						fos.close();
 					} catch (IOException e) {
 						e.printStackTrace();
-						Log.e(TAG, e.getMessage());
+						Log.e(TAG, "IOException= "+e.getMessage());
 					}
 				}
 

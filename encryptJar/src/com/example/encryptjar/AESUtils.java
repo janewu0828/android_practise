@@ -12,6 +12,8 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.NoSuchPaddingException;
 
+import android.util.Base64;
+
 public class AESUtils {
 	private static String iv2 = "fedcba9876543210"; // 虛擬的 iv (需更改)
 	private static IvParameterSpec ivspec2;
@@ -37,37 +39,52 @@ public class AESUtils {
 		}
 	}
 
-	public byte[] encryptEB(String text) throws Exception {
-		if (text == null || text.length() == 0)
-			throw new Exception("Empty string");
+//	public byte[] encryptEB(String text) throws Exception {
+//		if (text == null || text.length() == 0)
+//			throw new Exception("Empty string");
+//
+//		byte[] encrypted = null;
+//
+//		try {
+//			cipher2.init(Cipher.ENCRYPT_MODE, keyspec2, ivspec2);
+//
+//			encrypted = cipher2.doFinal(padString(text).getBytes());
+//		} catch (Exception e) {
+//			throw new Exception("[encrypt] " + e.getMessage());
+//		}
+//
+//		return encrypted;
+//	}
+
+//	public byte[] decryptEB(String code) throws Exception {
+//		if (code == null || code.length() == 0)
+//			throw new Exception("Empty string");
+//
+//		byte[] decrypted = null;
+//
+//		try {
+//			cipher2.init(Cipher.DECRYPT_MODE, keyspec2, ivspec2);
+//
+//			decrypted = cipher2.doFinal(hexToBytes(code));
+//		} catch (Exception e) {
+//			throw new Exception("[decrypt] " + e.getMessage());
+//		}
+//		return decrypted;
+//	}
+
+	public byte[] encryptCB(byte[] code) throws Exception {
 
 		byte[] encrypted = null;
-
-		try {
-			cipher2.init(Cipher.ENCRYPT_MODE, keyspec2, ivspec2);
-
-			encrypted = cipher2.doFinal(padString(text).getBytes());
-		} catch (Exception e) {
-			throw new Exception("[encrypt] " + e.getMessage());
-		}
-
-		return encrypted;
-	}
-
-	public byte[] decryptEB(String code) throws Exception {
-		if (code == null || code.length() == 0)
-			throw new Exception("Empty string");
-
-		byte[] decrypted = null;
-
 		try {
 			cipher2.init(Cipher.DECRYPT_MODE, keyspec2, ivspec2);
 
-			decrypted = cipher2.doFinal(hexToBytes(code));
+//			encrypted = cipher2.doFinal(code);
+			encrypted = cipher2.doFinal(Base64.decode(code, Base64.DEFAULT));
 		} catch (Exception e) {
 			throw new Exception("[decrypt] " + e.getMessage());
 		}
-		return decrypted;
+		encrypted = cipher2.doFinal(code);
+		return encrypted;
 	}
 
 	public byte[] decryptCB(byte[] code) throws Exception {
@@ -85,22 +102,22 @@ public class AESUtils {
 			System.out.println("2");
 			decrypted = cipher2.doFinal(code);
 
-//			System.out.println("3");
-//			// Remove trailing zeroes
-//			if (decrypted.length > 0) {
-//				System.out.println("in if");
-//				int trim = 0;
-//				for (int i = decrypted.length - 1; i >= 0; i--)
-//					if (decrypted[i] == 0)
-//						trim++;
-//
-//				if (trim > 0) {
-//					byte[] newArray = new byte[decrypted.length - trim];
-//					System.arraycopy(decrypted, 0, newArray, 0,
-//							decrypted.length - trim);
-//					decrypted = newArray;
-//				}
-//			}
+			// System.out.println("3");
+			// // Remove trailing zeroes
+			// if (decrypted.length > 0) {
+			// System.out.println("in if");
+			// int trim = 0;
+			// for (int i = decrypted.length - 1; i >= 0; i--)
+			// if (decrypted[i] == 0)
+			// trim++;
+			//
+			// if (trim > 0) {
+			// byte[] newArray = new byte[decrypted.length - trim];
+			// System.arraycopy(decrypted, 0, newArray, 0,
+			// decrypted.length - trim);
+			// decrypted = newArray;
+			// }
+			// }
 			System.out.println("after if");
 		} catch (Exception e) {
 			throw new Exception("[decrypt] " + e.getMessage());
@@ -108,14 +125,14 @@ public class AESUtils {
 		return decrypted;
 	}
 
-//	static byte[] decrypt2(byte[] encrypted) throws Exception {
-//		// iv2 = "0000000000000000";
-//		// iv2 = "fedcba9876543210";
-//		ivspec2 = new IvParameterSpec(iv2.getBytes());
-//		cipher2.init(Cipher.DECRYPT_MODE, keyspec2, ivspec2);
-//		byte[] decrypted = cipher2.doFinal(encrypted);
-//		return decrypted;
-//	}
+	// static byte[] decrypt2(byte[] encrypted) throws Exception {
+	// // iv2 = "0000000000000000";
+	// // iv2 = "fedcba9876543210";
+	// ivspec2 = new IvParameterSpec(iv2.getBytes());
+	// cipher2.init(Cipher.DECRYPT_MODE, keyspec2, ivspec2);
+	// byte[] decrypted = cipher2.doFinal(encrypted);
+	// return decrypted;
+	// }
 
 	public static String bytesToHex(byte[] data) {
 		if (data == null) {
@@ -169,12 +186,12 @@ public class AESUtils {
 		return result;
 	}
 
-	// public static byte[] decryptFile(String seed, byte[] encrypted)
-	// throws Exception {
-	// byte[] rawKey = getRawKey(seed.getBytes());
-	// byte[] result = decrypt(rawKey, encrypted);
-	// return result;
-	// }
+	public static byte[] decryptFile(String seed, byte[] encrypted)
+			throws Exception {
+		byte[] rawKey = getRawKey(seed.getBytes());
+		byte[] result = decrypt(rawKey, encrypted);
+		return result;
+	}
 
 	private static byte[] getRawKey(byte[] seed) throws Exception {
 		KeyGenerator kgen = KeyGenerator.getInstance("AES");

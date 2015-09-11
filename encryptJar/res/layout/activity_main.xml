@@ -40,7 +40,7 @@
         android:layout_below="@+id/text_state"
         android:layout_marginTop="40dp"
         android:ems="10"
-        android:text="output.jar" />
+        android:text="output123.jar" />
 
     <TextView
         android:id="@+id/output"
@@ -57,7 +57,7 @@
         android:layout_alignLeft="@+id/output"
         android:layout_below="@+id/output"
         android:ems="10"
-        android:text="encrypted.jar" >
+        android:text="encrypted123_20150903.jar" >
 
         <requestFocus />
     </EditText>
@@ -77,7 +77,7 @@
         android:layout_alignLeft="@+id/key"
         android:layout_below="@+id/key"
         android:ems="10"
-        android:text="589040359334464" />
+        android:text="" />
 
     <Button
         android:id="@+id/btn_encryption"
@@ -86,5 +86,14 @@
         android:layout_alignLeft="@+id/edit_seed"
         android:layout_below="@+id/edit_seed"
         android:text="encryption" />
+
+    <Button
+        android:id="@+id/btn_D"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_encryption"
+        android:layout_alignBottom="@+id/btn_encryption"
+        android:layout_alignRight="@+id/edit_seed"
+        android:text="D" />
 
 </RelativeLayout>
