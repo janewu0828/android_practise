@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -25,8 +26,8 @@ public class MainActivity extends ActionBarActivity {
 	private static String seed = "guess"; // 种子
 
 	private TextView text_state;
-	private EditText edit_seed,edit_input,edit_output;
-	private Button btn_Encryption,btn_D;
+	private EditText edit_seed, edit_input, edit_output;
+	private Button btn_Encryption, btn_D;
 
 	private String inputFileName = null;
 	private String outputFileName = null;
@@ -39,72 +40,102 @@ public class MainActivity extends ActionBarActivity {
 
 	boolean isSuccess = false;
 
+	String outputFilePath = Environment.getExternalStorageDirectory()
+			.getAbsolutePath() + "/project/";
+
 	class MyClickListener implements OnClickListener {
 
 		@Override
 		public void onClick(View v) {
 			String str = edit_seed.getText().toString();
-			
+
 			inputFileName = edit_input.getText().toString();
 			oldFile = new File(sdCard + "/project/", inputFileName);
 			outputFileName = edit_output.getText().toString();
+			byte[] key;
 
 			if (str == null || "".equals(str)) {
 				text_state.setText("seed is null !!!");
 				Log.e(TAG, "str is null" + str);
 			} else {
-				// 加密保存
-				seed = str;
-				isSuccess = true;
 
 				try {
-					fis = new FileInputStream(oldFile);
-
-					byte[] oldByte = new byte[(int) oldFile.length()];
-					fis.read(oldByte); // 读取
-					
-					AESUtils mAES = new AESUtils(seed);
-
-					// 加密
-					byte[] newByte = AESUtils_old.encryptVoice(seed, oldByte);
-//					byte[] newByte = mAES.encryptCB(oldByte);
-					oldFile = new File(sdCard + "/project/", outputFileName);
-					fos = new FileOutputStream(oldFile);
-					fos.write(newByte);
-
-				} catch (FileNotFoundException e) {
+					isSuccess = true;
+					key = str.getBytes("UTF-8");
+					new AESFiles().encrypt(oldFile, new File(outputFilePath
+							+ outputFileName), key);
+				} catch (UnsupportedEncodingException e) {
 					isSuccess = false;
 					e.printStackTrace();
-					Log.e(TAG, "FileNotFoundException= "+e.getMessage());
-				} catch (IOException e) {
-					isSuccess = false;
-					e.printStackTrace();
-					Log.e(TAG, "IOException= "+e.getMessage());
+					Log.e(TAG, e.getMessage());
 				} catch (Exception e) {
 					isSuccess = false;
 					e.printStackTrace();
-					Log.e(TAG, "Exception= "+e.getMessage());
-				} finally {
-					try {
-						fis.close();
-						fos.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-						Log.e(TAG, "IOException= "+e.getMessage());
-					}catch (NullPointerException e) {
-						e.printStackTrace();
-						Log.e(TAG, "NullPointerException= "+e.getMessage());
-					}catch (Exception e) {
-						e.printStackTrace();
-						Log.e(TAG, "Exception= "+e.getMessage());
-					}
+					Log.e(TAG, e.getMessage());
 				}
 
+				// MCrypt mcrypt = new MCrypt();
+				// try {
+				// /* 加密*/
+				// String encrypted = MCrypt.bytesToHex(
+				// mcrypt.encrypt("需加密的字符") );
+				// } catch (Exception e1) {
+				// // TODO 自動產生的 catch 區塊
+				// e1.printStackTrace();
+				// }
+
+				// // 加密保存
+				// seed = str;
+				// isSuccess = true;
+				//
+				// try {
+				// fis = new FileInputStream(oldFile);
+				//
+				// byte[] oldByte = new byte[(int) oldFile.length()];
+				// fis.read(oldByte); // 读取
+				//
+				// AESUtils mAES = new AESUtils(seed);
+				//
+				// // 加密
+				// byte[] newByte = AESUtils_old.encryptVoice(seed, oldByte);
+				// // byte[] newByte = mAES.encryptCB(oldByte);
+				// oldFile = new File(sdCard + "/project/", outputFileName);
+				// fos = new FileOutputStream(oldFile);
+				// fos.write(newByte);
+				//
+				// } catch (FileNotFoundException e) {
+				// isSuccess = false;
+				// e.printStackTrace();
+				// Log.e(TAG, "FileNotFoundException= "+e.getMessage());
+				// } catch (IOException e) {
+				// isSuccess = false;
+				// e.printStackTrace();
+				// Log.e(TAG, "IOException= "+e.getMessage());
+				// } catch (Exception e) {
+				// isSuccess = false;
+				// e.printStackTrace();
+				// Log.e(TAG, "Exception= "+e.getMessage());
+				// } finally {
+				// try {
+				// fis.close();
+				// fos.close();
+				// } catch (IOException e) {
+				// e.printStackTrace();
+				// Log.e(TAG, "IOException= "+e.getMessage());
+				// }catch (NullPointerException e) {
+				// e.printStackTrace();
+				// Log.e(TAG, "NullPointerException= "+e.getMessage());
+				// }catch (Exception e) {
+				// e.printStackTrace();
+				// Log.e(TAG, "Exception= "+e.getMessage());
+				// }
+				// }
+				//
 				if (isSuccess) {
 					text_state.setText("加密成功");
-					Log.e(TAG, "seed= " + seed + ", 加密成功");
-					Log.e(TAG, "filepath= "
-							+ oldFile.getAbsolutePath().toString());
+					// Log.i(TAG, "seed= " + seed + ", 加密成功");
+					// Log.i(TAG, "filepath= "
+					// + oldFile.getAbsolutePath().toString());
 				} else {
 					text_state.setText("加密失敗");
 				}
@@ -112,84 +143,97 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 	}
-	
+
 	class MyClickListener2 implements OnClickListener {
 
 		@Override
 		public void onClick(View v) {
-			
-//			MCrypt mcrypt = new MCrypt();
-//			try {
-//				/* 加密*/
-//				String encrypted = MCrypt.bytesToHex( mcrypt.encrypt("需加密的字符") );
-//				/* 解密*/
-//				String decrypted = new String( mcrypt.decryptCB( encrypted ) );
-//			} catch (Exception e1) {
-//				// TODO 自動產生的 catch 區塊
-//				e1.printStackTrace();
-//			}
 
-			
-			
-			
 			String str = edit_seed.getText().toString();
-			
+
 			inputFileName = edit_input.getText().toString();
 			oldFile = new File(sdCard + "/project/", inputFileName);
-			Log.i("AAA","oldFile= "+oldFile.getAbsolutePath().toString());
+			Log.i(TAG, "oldFile= " + oldFile.getAbsolutePath().toString());
 			outputFileName = edit_output.getText().toString();
+			byte[] key;
 
 			if (str == null || "".equals(str)) {
 				text_state.setText("seed is null !!!");
 				Log.e(TAG, "str is null" + str);
 			} else {
-				// 解密保存
-				seed = str;
-				isSuccess = true;
 
 				try {
-					fis = new FileInputStream(oldFile);
-
-					byte[] oldByte = new byte[(int) oldFile.length()];
-					fis.read(oldByte); // 读取
-					
-					AESUtils mAES = new AESUtils(seed);
-
-					// 解密
-					byte[] newByte = AESUtils_old.decryptVoice(seed, oldByte);
-//					byte[] newByte = mAES.decryptCB(oldByte);
-					
-					oldFile = new File(sdCard + "/project/", outputFileName);
-					fos = new FileOutputStream(oldFile);
-					fos.write(newByte);
-
-				} catch (FileNotFoundException e) {
+					isSuccess = true;
+					key = str.getBytes("UTF-8");
+					new AESFiles().decrypt(oldFile, new File(outputFilePath
+							+ outputFileName), key);
+				} catch (UnsupportedEncodingException e) {
 					isSuccess = false;
 					e.printStackTrace();
-					Log.e(TAG, "FileNotFoundException= "+e.getMessage());
-				} catch (IOException e) {
-					isSuccess = false;
-					e.printStackTrace();
-					Log.e(TAG, "IOException= "+e.getMessage());
+					Log.e(TAG, e.getMessage());
 				} catch (Exception e) {
 					isSuccess = false;
 					e.printStackTrace();
-					Log.e(TAG, "Exception= "+e.getMessage());
-				} finally {
-					try {
-						fis.close();
-						fos.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-						Log.e(TAG, "IOException= "+e.getMessage());
-					}
+					Log.e(TAG, e.getMessage());
 				}
 
+				// MCrypt mcrypt = new MCrypt();
+				// try {
+				// /* 解密*/
+				// String decrypted = new String( mcrypt.decryptCB( encrypted )
+				// );
+				// } catch (Exception e1) {
+				// // TODO 自動產生的 catch 區塊
+				// e1.printStackTrace();
+				// }
+
+				// // 解密保存
+				// seed = str;
+				// isSuccess = true;
+				//
+				// try {
+				// fis = new FileInputStream(oldFile);
+				//
+				// byte[] oldByte = new byte[(int) oldFile.length()];
+				// fis.read(oldByte); // 读取
+				//
+				// AESUtils mAES = new AESUtils(seed);
+				//
+				// // 解密
+				// byte[] newByte = AESUtils_old.decryptVoice(seed, oldByte);
+				// // byte[] newByte = mAES.decryptCB(oldByte);
+				//
+				// oldFile = new File(sdCard + "/project/", outputFileName);
+				// fos = new FileOutputStream(oldFile);
+				// fos.write(newByte);
+				//
+				// } catch (FileNotFoundException e) {
+				// isSuccess = false;
+				// e.printStackTrace();
+				// Log.e(TAG, "FileNotFoundException= "+e.getMessage());
+				// } catch (IOException e) {
+				// isSuccess = false;
+				// e.printStackTrace();
+				// Log.e(TAG, "IOException= "+e.getMessage());
+				// } catch (Exception e) {
+				// isSuccess = false;
+				// e.printStackTrace();
+				// Log.e(TAG, "Exception= "+e.getMessage());
+				// } finally {
+				// try {
+				// fis.close();
+				// fos.close();
+				// } catch (IOException e) {
+				// e.printStackTrace();
+				// Log.e(TAG, "IOException= "+e.getMessage());
+				// }
+				// }
+				//
 				if (isSuccess) {
 					text_state.setText("D密成功");
-					Log.e(TAG, "seed= " + seed + ", D密成功");
-					Log.e(TAG, "filepath= "
-							+ oldFile.getAbsolutePath().toString());
+					// Log.i(TAG, "seed= " + seed + ", D密成功");
+					// Log.i(TAG, "filepath= "
+					// + oldFile.getAbsolutePath().toString());
 				} else {
 					text_state.setText("D密失敗");
 				}
@@ -210,7 +254,7 @@ public class MainActivity extends ActionBarActivity {
 
 		btn_Encryption = (Button) findViewById(R.id.btn_encryption);
 		btn_Encryption.setOnClickListener(new MyClickListener());
-		
+
 		btn_D = (Button) findViewById(R.id.btn_D);
 		btn_D.setOnClickListener(new MyClickListener2());
 	}

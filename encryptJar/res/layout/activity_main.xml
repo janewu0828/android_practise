@@ -40,7 +40,7 @@
         android:layout_below="@+id/text_state"
         android:layout_marginTop="40dp"
         android:ems="10"
-        android:text="output123.jar" />
+        android:text="enc_secure.txt" />
 
     <TextView
         android:id="@+id/output"
@@ -57,7 +57,7 @@
         android:layout_alignLeft="@+id/output"
         android:layout_below="@+id/output"
         android:ems="10"
-        android:text="encrypted123_20150903.jar" >
+        android:text="decrypted_enc_secure.txt" >
 
         <requestFocus />
     </EditText>
@@ -77,7 +77,7 @@
         android:layout_alignLeft="@+id/key"
         android:layout_below="@+id/key"
         android:ems="10"
-        android:text="" />
+        android:text="7c3a8d0ae3ee0722" />
 
     <Button
         android:id="@+id/btn_encryption"
